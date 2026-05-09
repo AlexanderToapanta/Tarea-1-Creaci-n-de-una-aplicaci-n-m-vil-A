@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../view/num_perfecto_page.dart';
+import 'view/num_perfecto_page.dart';
 void main(){
   runApp(MyApp());
 }
