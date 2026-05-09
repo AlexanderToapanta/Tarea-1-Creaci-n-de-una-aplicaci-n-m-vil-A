@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../view/anio_view.dart';
+import 'view/anio_view.dart';
 
 void main(){
   runApp(MiApp());
