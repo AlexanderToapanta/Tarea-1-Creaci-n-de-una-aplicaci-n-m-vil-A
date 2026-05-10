@@ -1,21 +1,15 @@
 import '../model/num_perfecto_model.dart';
 
 class NumPerfectoController {
-
   Map<String, dynamic> verificarNumero(String input) {
-
     if (input.isEmpty) {
       return {"mensaje": "Ingrese un número", "esPerfecto": null};
     }
-
     int? n = int.tryParse(input);
-
     if (n == null || n <= 0) {
       return {"mensaje": "Ingrese un número entero positivo válido", "esPerfecto": null};
     }
-
     final r = NumPerfectoModel.esPerfecto(n);
-
     if (r["esPerfecto"]) {
       return {
         "esPerfecto": true,

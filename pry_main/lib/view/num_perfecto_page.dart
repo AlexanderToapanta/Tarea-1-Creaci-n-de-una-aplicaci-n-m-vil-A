@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../controller/num_perfecto_controller.dart';
 
-//ATOMOS
+// ========== ATOMOS ==========
 
 class Label extends StatelessWidget {
   final String text;
@@ -38,18 +38,21 @@ class NumberField extends StatelessWidget {
 class PrimaryButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-
-  PrimaryButton({required this.text, required this.onPressed});
+  final Color? backgroundColor;
+  PrimaryButton({required this.text, required this.onPressed, this.backgroundColor});
 
   @override
   Widget build(BuildContext context) =>
       ElevatedButton(
         onPressed: onPressed,
+        style: backgroundColor != null
+            ? ElevatedButton.styleFrom(backgroundColor: backgroundColor)
+            : null,
         child: Text(text),
       );
 }
 
-//MOLECULA
+// ========== MOLECULA ==========
 
 class NumeroInput extends StatelessWidget {
   final TextEditingController controller;
@@ -68,7 +71,7 @@ class NumeroInput extends StatelessWidget {
   }
 }
 
-//ORGANISMO
+// ========== ORGANISMO ==========
 
 class NumPerfectoCard extends StatefulWidget {
   @override
@@ -87,6 +90,13 @@ class _NumPerfectoCardState extends State<NumPerfectoCard> {
 
     setState(() {
       _resultado = r["mensaje"];
+    });
+  }
+
+  void _limpiar() {
+    setState(() {
+      _ctrlNumero.clear();  // Limpia el campo de texto
+      _resultado = "";       // Limpia el resultado
     });
   }
 
@@ -109,10 +119,23 @@ class _NumPerfectoCardState extends State<NumPerfectoCard> {
             Label("Número Perfecto"),
             NumeroInput(controller: _ctrlNumero),
             SizedBox(height: 10),
-            PrimaryButton(
-              text: "Verificar",
-              onPressed: _verificar,
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                PrimaryButton(
+                  text: "Verificar",
+                  onPressed: _verificar,
+                  backgroundColor: Colors.blue,
+                ),
+                PrimaryButton(
+                  text: "Limpiar",
+                  onPressed: _limpiar,
+                  backgroundColor: Colors.cyan,
+                ),
+              ],
             ),
+
             if (_resultado.isNotEmpty) ...[
               SizedBox(height: 20),
               Divider(),
@@ -130,6 +153,8 @@ class _NumPerfectoCardState extends State<NumPerfectoCard> {
   }
 }
 
+// ========== PÁGINA ==========
+
 class NumPerfectoPage extends StatelessWidget {
   NumPerfectoPage({super.key});
 
@@ -138,6 +163,7 @@ class NumPerfectoPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Número Perfecto"),
+        centerTitle: true,
       ),
       body: Center(
         child: SingleChildScrollView(
