@@ -40,7 +40,7 @@ class _MainViewState extends State<MainView> {
                     Divider(),
                     Text('Erick Obando', style: TextStyle(fontSize: 16)),
                     Text('Alexander Topanta', style: TextStyle(fontSize: 16)),
-                    Text('Alison Ayo', style: TextStyle(fontSize: 16)),
+                    Text('Alisson Ayo', style: TextStyle(fontSize: 16)),
                     Text('Josue Solano', style: TextStyle(fontSize: 16)),
                   ],
                 ),
@@ -72,6 +72,13 @@ class _MainViewState extends State<MainView> {
               Texto: 'Ejercicio 14',
               onPressed: () {
                 Navigator.pushNamed(context, '/ejercicio14');
+              },
+            ),
+            const SizedBox(height: 10),
+            BotonPantalla(
+              Texto: 'Ejercicio 15',
+              onPressed: () {
+                Navigator.pushNamed(context, '/ejercicio15');
               },
             ),
           ],
